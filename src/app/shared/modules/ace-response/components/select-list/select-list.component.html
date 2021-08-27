@@ -1,0 +1,27 @@
+<div #wrapper class="wrapper" (clickOutside)="closeList()">
+  <span (click)="onTriggerClick($event)">
+    <ng-content></ng-content>
+  </span>
+  <ul
+    aria-roledescription="list"
+    aria-label="list"
+    *ngIf="isListShown"
+    class="list"
+    [ngClass]="{ 'list--orientation-left': isLeftOrientation }"
+    [style.width.px]="+width + scrollPadding"
+  >
+    <li
+      aria-roledescription="list item"
+      aria-label="list item"
+      class="list__item"
+      [ngClass]="{
+        'list__item--disabled': item.disabled,
+        'list__item--selected': highlightSelected && value === item.value
+      }"
+      *ngFor="let item of options; let i = index"
+      (click)="onItemClick(item)"
+    >
+      <span class="list__item-content" [attr.id]="'listItem-' + i">{{ item[optionsLabel] }}</span>
+    </li>
+  </ul>
+</div>

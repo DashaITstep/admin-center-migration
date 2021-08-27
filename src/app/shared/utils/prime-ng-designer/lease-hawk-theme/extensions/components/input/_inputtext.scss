@@ -1,0 +1,7 @@
+.p-inputtext {
+  font-size: 14px;
+
+  &:enabled:focus {
+    box-shadow: none;
+  }
+}

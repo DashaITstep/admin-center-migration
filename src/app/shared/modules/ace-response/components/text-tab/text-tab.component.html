@@ -1,0 +1,50 @@
+<div (clickOutside)="clearActiveOptionIndex()">
+  <ng-container
+    *ngFor="let control of formArray?.controls; let first = first; let last = last; let i = index"
+  >
+    <div
+      class="text flex"
+      [class.text--first]="first && !last"
+      [class.text--middle]="!first && !last"
+      [class.text--last]="last && !first"
+      [class.text--single]="first && last"
+      [class.text--disabled]="control.disabled || isSelectMode"
+    >
+      <textarea
+        #textAreaElement
+        [formControl]="$any(control)"
+        class="textarea-input"
+        [class.inputs--default]="isDefaultResponse && controlContainer.control.get('SMS').pristine"
+        (focus)="setActiveOptionIndex(i)"
+        (keyup)="clearActiveOptionIndex()"
+        (change)="textChangeOn('SMS', i)"
+        placeholder="This defaults to the call response."
+        autoResize="autoResize"
+        pInputTextarea
+        [rows]="1"
+      >
+      </textarea>
+      <app-input-actions
+        class="input-actions"
+        [isCogShown]="first && !control.disabled"
+        [isBinShown]="!first"
+        [isAudioShown]="false"
+        (binClicked)="removeControlFromFormArrayByIndex(formArray, i)"
+        (addPromptVariation)="addPromptVariation(formArray)"
+      >
+        <!-- Do NOT remove this -->
+        <!-- TODO: Lightbox is deprecated in favor of Galleria -->
+        <!-- <app-add-image *ngIf="question.UserDefinable"
+                     [images]="question.SMS.AttachedImages"
+                     (onUpdate)="updateAttachedImages($event, question, 'SMS')">
+      </app-add-image> -->
+      </app-input-actions>
+    </div>
+    <app-response-options
+      *ngIf="activeDisplayOptionIndex === i"
+      [options]="responseOptions"
+      (select)="selectOption(formArray, i, $event)"
+    >
+    </app-response-options>
+  </ng-container>
+</div>

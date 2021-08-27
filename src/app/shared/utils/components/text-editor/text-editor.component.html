@@ -1,0 +1,77 @@
+<div [formGroup]="group" class="mt-1" [class.text--disabled]="isSelectMode">
+  <app-link-target-modal
+    *ngIf="displayLinkModal"
+    [prefix]="displayLinkModal"
+    (closed)="onCloseLinkModal()"
+    (submitted)="onLinkAdded($event)"
+  ></app-link-target-modal>
+
+  <p-editor
+    class="editor-styles"
+    (focusout)="cBlur.emit($event)"
+    [placeholder]="placeholder"
+    [formControlName]="controlName"
+    [readonly]="isReadonly"
+    [class.default]="isModified"
+    [modules]="modules"
+    (onTextChange)="onTextChange($event)"
+    (focusin)="cFocus.emit($event)"
+  >
+    <p-header>
+      <span class="ql-formats" title="Font Size">
+        <select class="ql-header ql-picker">
+          <option selected></option>
+          <option value="1"></option>
+          <option value="2"></option>
+          <option value="3"></option>
+        </select>
+      </span>
+
+      <span class="ql-formats" title="Font Style">
+        <button type="button" class="ql-bold" title="Bold"></button>
+        <button type="button" class="ql-italic" title="Italic"></button>
+        <button type="button" class="ql-underline" title="Underline"></button>
+      </span>
+
+      <span class="ql-formats" title="List Style">
+        <button type="button" class="ql-list" value="ordered" title="Ordered List"></button>
+        <button type="button" class="ql-list" value="bullet" title="Bullet List"></button>
+      </span>
+
+      <span class="ql-formats" title="Text Alignment">
+        <select class="ql-align">
+          <option selected="selected"></option>
+          <option value="center" title="Align Center"></option>
+          <option value="right" title="Align Right"></option>
+          <option value="justify" title="Justify Content"></option>
+        </select>
+      </span>
+
+      <span class="ql-formats">
+        <button type="button" class="ql-clean" title="Remove Styling"></button>
+        <button
+          type="button"
+          class="ql-link"
+          title="Add Hyperlink"
+          (click)="onAddLink($event)"
+        ></button>
+        <button
+          type="button"
+          class="ql-image"
+          title="Add Image"
+          (click)="onAddImage($event)"
+        ></button>
+      </span>
+
+      <span class="ql-formats">
+        <button type="button" class="ql-emoji" title="Add Emoji"></button>
+        <button
+          type="button"
+          class="ql-toggleContentMode"
+          title="Toggle Content View Mode"
+          (click)="onToggleContentMode()"
+        ></button>
+      </span>
+    </p-header>
+  </p-editor>
+</div>

@@ -1,0 +1,16 @@
+<div class="ql-snow">
+  <div class="ql-tooltip ql-editing">
+    <input type="text" [(ngModel)]="src" [placeholder]="placeholder" />
+
+    <a class="ql-action" (click)="submit()"></a>
+
+    <div class="mt-5">
+      <label>
+        <input type="checkbox" [(ngModel)]="newTab" />
+        &nbsp;Open in a new tab
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="link-target-backdrop" (click)="closed.emit()"></div>

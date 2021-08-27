@@ -1,0 +1,11 @@
+<app-text-editor
+  [isAutoFocused]="isAutoFocused"
+  [controlName]="controlName"
+  placeholder="This defaults to the text response."
+  [isReadonly]="isReadonly"
+  [isModified]="isDefaultResponse && controlContainer.control.get('WebChat').pristine"
+  [isSelectMode]="isSelectMode"
+  (keypress)="clearActiveOptionIndex()"
+  (cFocus)="setActiveOptionIndex(1)"
+>
+</app-text-editor>

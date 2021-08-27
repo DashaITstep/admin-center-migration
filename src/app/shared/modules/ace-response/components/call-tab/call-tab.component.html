@@ -1,0 +1,38 @@
+<div (clickOutside)="clearActiveOptionIndex()">
+  <ng-container
+    *ngFor="let control of formArray?.controls; let first = first; let last = last; let i = index"
+  >
+    <div
+      class="text flex"
+      [class.text--first]="first && !last"
+      [class.text--middle]="!first && !last"
+      [class.text--last]="last && !first"
+      [class.text--single]="first && last"
+      [class.text--disabled]="control.disabled || isSelectMode"
+    >
+      <app-highlight-input
+        [formControl]="$any(control)"
+        (focused)="setActiveOptionIndex(i)"
+        (keyup)="clearActiveOptionIndex()"
+        [class.inputs--default]="isDefaultResponse && controlContainer.control.get('Voice').pristine"
+      ></app-highlight-input>
+      <app-input-actions
+        class="input-actions"
+        [isCogShown]="first && !control.disabled"
+        [isBinShown]="!first"
+        [isAudioShown]="true"
+        [isAudioDisabled]="control.value?.trim().length === 0"
+        (audioPreviewClicked)="playVoiceByText(control.value)"
+        (binClicked)="removeControlFromFormArrayByIndex(formArray, i)"
+        (addPromptVariation)="addPromptVariation(formArray)"
+      >
+      </app-input-actions>
+    </div>
+    <app-response-options
+      *ngIf="activeDisplayOptionIndex === i"
+      [options]="responseOptions"
+      (select)="selectOption(formArray, i, $event)"
+    >
+    </app-response-options>
+  </ng-container>
+</div>

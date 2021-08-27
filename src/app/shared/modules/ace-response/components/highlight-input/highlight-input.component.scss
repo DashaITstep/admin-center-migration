@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  width: 100%;
+}
+.highlight-input {
+  height: 100%;
+  width: 100%;
+  padding: 0.7em;
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

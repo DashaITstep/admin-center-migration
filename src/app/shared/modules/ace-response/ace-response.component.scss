@@ -1,0 +1,55 @@
+:host {
+
+  .ace-response {
+    background-color: #e5e5e5;
+    cursor: pointer;
+
+    .ace-response__head {
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+
+      .ace-response__title-box {
+        display: flex;
+
+        .ace-response__toggle {
+          margin-right: 10px;
+          display: flex;
+          align-items: center;
+
+          .pi {
+            font-size: 14px;
+            transition: .2s;
+
+            &.down {
+              transform: rotate(90deg);
+            }
+          }
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        .ace-response__title {
+          padding-right: 5px;
+        }
+      }
+
+      .ace-response__tags {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .ace-response__body {
+      padding: 8px;
+      background-color: #f2f2f2;
+      min-height: 50px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+  }
+}

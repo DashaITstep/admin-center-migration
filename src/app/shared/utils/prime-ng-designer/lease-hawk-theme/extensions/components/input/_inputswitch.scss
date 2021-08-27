@@ -1,0 +1,40 @@
+.p-inputswitch {
+  &:before {
+    z-index: 1;
+    line-height: 1em;
+    position: absolute;
+    color: #7c7c7c;
+    font-size: 10px;
+    content: 'Off';
+    top: 8px;
+    left: 8px;
+  }
+
+  &.p-inputswitch-checked {
+    &:not(.p-disabled):hover .p-inputswitch-slider,
+    & .p-inputswitch-slider {
+      background-color: $green;
+    }
+
+    &:before {
+      content: 'On';
+      right: 8px;
+      left: auto;
+      color: #fff;
+    }
+
+    .p-inputswitch-slider {
+      &:before {
+        transform: translateX(-1.75em);
+        right: 0;
+      }
+    }
+  }
+
+  .p-inputswitch-slider {
+    &:before {
+      right: 0.25em;
+      left: auto;
+    }
+  }
+}

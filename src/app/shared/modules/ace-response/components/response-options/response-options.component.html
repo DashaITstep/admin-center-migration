@@ -1,0 +1,7 @@
+<ul class="prompt-options">
+  <li
+    *ngFor="let option of options"
+    [innerHTML]="option.ResponseValue | variableHighlighting"
+    (click)="select.emit(option.ResponseValue)"
+  ></li>
+</ul>

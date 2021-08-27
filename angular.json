@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "a22c97b0-e1a1-4287-a00d-8272ddfed6c0"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,17 +34,29 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeicons/primeicons.css",
+              "primeng/resources/themes/mdc-light-deeppurple/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "src/styles/index.scss",
+              "node_modules/quill/dist/quill.snow.css",
+              "node_modules/quill-emoji/dist/quill-emoji.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/quill/dist/quill.min.js",
+              "node_modules/quill-emoji/dist/quill-emoji.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "quill-emoji"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",

@@ -1,0 +1,38 @@
+@import '../../../../utils/variables';
+
+.prompt-options {
+  list-style: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  width: calc(100% - 39px);
+  position: absolute;
+  background-color: white;
+  z-index: 250;
+
+  & > li {
+    display: block;
+    padding: 14px 40px;
+    margin: 0;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #cccccc;
+    }
+
+    &:hover {
+      background-color: $grey-lighter;
+      cursor: pointer;
+    }
+
+    &:hover(:first-of-type) {
+      background-color: $grey-lighter;
+      cursor: pointer;
+      border-radius: 4px 4px 0 0;
+    }
+
+    &:hover:last-of-type {
+      background-color: $grey-lighter;
+      cursor: pointer;
+      border-radius: 0 0 4px 4px;
+    }
+  }
+}

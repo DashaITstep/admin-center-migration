@@ -1,0 +1,195 @@
+$quillEditorPadding: 0.7em;
+@import '../../../styles/media-queries';
+@import '../../../styles/variables';
+@import './extensions/_components';
+
+.p-disabled,
+.p-disabled * {
+  pointer-events: all;
+}
+
+.p-disabled,
+.p-component:disabled {
+  opacity: 1;
+}
+
+body {
+  .card {
+    border-radius: 5px;
+    padding: 70px 30px 25px;
+    position: relative;
+
+    &.padding-sm {
+      padding: 53px 15px 7px;
+
+      @include breakpoints-up(sm) {
+        padding: 65px 20px 20px;
+      }
+    }
+
+    & > h1 {
+      font-size: 18px;
+
+      &:first-child {
+        color: #ffffff;
+        background-color: #162a3e;
+        padding: 10px 15px 9px;
+        border-radius: 5px 5px 0 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        @include breakpoints-up(md) {
+          padding: 14px 15px 13px;
+        }
+      }
+    }
+
+    .hr {
+      margin: 1.5em 0 2.5em;
+
+      &_medium {
+        margin: 0.5em 0 1em;
+      }
+    }
+  }
+
+  .p-disabled,
+  textarea:disabled,
+  input:disabled {
+    background-color: #e5e5e5;
+
+    .p-inputtext {
+      background-color: #e5e5e5;
+    }
+  }
+
+  .p-inputtext {
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+    padding-left: 1em;
+    width: 100%;
+  }
+
+  .p-inputgroup {
+    position: relative;
+
+    .p-inputgroup-addon {
+      display: flex;
+      padding: 0 15px;
+      align-items: center;
+      justify-content: center;
+      min-width: 2em;
+
+      &_wide {
+        min-width: 90px;
+      }
+    }
+
+    .p-inputtext {
+      padding-left: 1em;
+    }
+  }
+
+  .p-listbox {
+    .p-listbox-header {
+      border-radius: $borderRadius $borderRadius 0 0;
+
+      .p-listbox-filter-container {
+        width: 100%;
+      }
+    }
+  }
+
+  .p-listbox-list {
+    border-radius: $borderRadius;
+
+    .p-listbox-item {
+      &:last-child {
+        border-radius: 0 0 $borderRadius $borderRadius;
+      }
+    }
+  }
+
+  .p-inline-message {
+    padding: $inputPadding;
+    border-radius: $borderRadius / 2;
+    text-align: center;
+
+    .p-inline-message-icon {
+      display: none;
+    }
+
+    &.p-inline-message-error {
+      padding: 20px 10px;
+      background-color: #fdebeb;
+      width: 100%;
+    }
+  }
+
+  .p-colorpicker-panel {
+    background-color: #fff;
+    border-color: #fff;
+  }
+
+  .p-messages {
+    border-radius: $borderRadius / 2;
+  }
+
+  .p-panel {
+    .p-panel-titlebar {
+      .p-panel-title {
+        font-weight: 400;
+      }
+    }
+
+    .p-panel-content {
+      border-radius: 0 0 $borderRadius $borderRadius;
+      line-height: 1.3em;
+      color: #9d9d9d;
+    }
+  }
+
+  .rounded {
+    .p-inputtext {
+      line-height: 1.3em;
+      padding: 0.5em 2em 0.5em 1.3em;
+      font-size: 12px;
+      height: 34px;
+      align-items: center;
+      box-shadow: none;
+      color: #565656;
+    }
+  }
+
+  .p-chkbox {
+    .p-chkbox-box {
+      border-radius: 4px;
+    }
+  }
+
+  .p-inputtextarea-resizable {
+    padding-right: 25px;
+  }
+
+  .date-picker-container {
+    p-calendar {
+      z-index: 11;
+    }
+  }
+
+  // TODO: Lightbox is deprecated in favor of Galleria
+  .p-lightbox {
+    max-width: 80%;
+    max-height: 80%;
+
+    &-content {
+      display: flex;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+}

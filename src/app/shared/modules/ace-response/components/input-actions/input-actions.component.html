@@ -1,0 +1,35 @@
+<div class="input-actions relative-wrapper">
+  <div class="input-actions__icons">
+    <span
+      class="input-actions__icon"
+      [class.input-actions__icon--disabled]="isAudioDisabled"
+      *ngIf="isAudioShown"
+    >
+      <i class="fas fa-spinner spin" *ngIf="isAudioLoading; else volume"></i>
+      <ng-template #volume>
+        <i class="fas fa-volume" (click)="audioPreviewClicked.emit()"></i>
+      </ng-template>
+    </span>
+
+    <span class="input-actions__icon" *ngIf="isCogShown">
+      <i class="fas fa-cog" (click)="toggleDropdown($event)"> </i>
+    </span>
+
+    <span class="input-actions__icon" *ngIf="isBinShown">
+      <i class="fas fa-trash" (click)="binClicked.emit()"></i>
+    </span>
+  </div>
+
+  <div
+    class="input-actions__options-dropdown"
+    (clickOutside)="closeDropdown()"
+    [class.input-actions__options-dropdown--opened]="dropdownOpened"
+  >
+    <!--    <div class="options-dropdown__item">-->
+    <!--      Add Custom Call To Action-->
+    <!--    </div>-->
+    <div class="input-actions__item" (click)="addPromptVariation.emit()">
+      Add Response Variation
+    </div>
+  </div>
+</div>

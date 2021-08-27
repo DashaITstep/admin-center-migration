@@ -1,0 +1,76 @@
+@import '../../../../utils/variables';
+
+app-input-actions {
+  display: block;
+}
+
+.input-actions {
+  position: relative;
+
+  &:hover {
+    .icon {
+      color: $primary-color;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    z-index: 10;
+    color: #b8b8b8;
+  }
+
+  &__icon {
+    border-radius: 25px;
+    width: 23px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: $white;
+      background-color: $primary-color;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    &--disabled:hover {
+      color: #b8b8b8;
+      background-color: $white;
+      transition: all 0.3s ease-in-out;
+      cursor: not-allowed;
+    }
+  }
+
+  &__options-dropdown {
+    visibility: hidden;
+    position: absolute;
+    z-index: 251;
+    right: 5px;
+    top: 35px;
+    width: 184px;
+    background: $white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+
+    &--opened {
+      visibility: visible;
+    }
+  }
+
+  &__item {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ccc;
+
+    &:hover {
+      background: #f7f7f7;
+    }
+
+    &:last-child {
+      border-bottom: none;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+}

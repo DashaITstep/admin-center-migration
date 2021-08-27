@@ -1,0 +1,79 @@
+.p-tabview {
+  & .p-tabview-nav {
+    background-color: transparent;
+    border: none;
+
+    li {
+      .p-tabview-nav-link {
+        display: flex;
+        justify-content: center;
+        min-height: 30px;
+        padding: 0;
+        margin: 0;
+        color: $color-eclipse;
+        background-color: $grey-light;
+        font-weight: 400;
+        border: 1px solid #c8c8c8;
+        border-bottom-width: 3px;
+        border-bottom-color: $grey-light;
+        border-radius: 0;
+        cursor: pointer !important;
+
+        &:not(.p-disabled):focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+      &:first-child {
+        .p-tabview-nav-link {
+          border-top-left-radius: $borderRadius / 2;
+        }
+      }
+      &:first-child + li .p-tabview-nav-link {
+        border-left-width: 0;
+      }
+      &:nth-child(3) {
+        .p-tabview-nav-link {
+          border-top-right-radius: $borderRadius / 2;
+          border-left-width: 0;
+        }
+      }
+    }
+
+    li.p-highlight {
+      .p-tabview-nav-link {
+        color: $color-eclipse;
+        background-color: $grey-light;
+        border-top-color: #c8c8c8;
+        border-right-color: #c8c8c8;
+        border-left-color: #c8c8c8;
+      }
+    }
+
+    li:not(.p-highlight):not(.p-disabled):hover {
+      .p-tabview-nav-link {
+        background: #dbdbdb;
+        color: $color-eclipse;
+        border-color: #dbdbdb;
+      }
+    }
+
+    @media screen and (max-width: 565px) {
+      display: flex;
+      li {
+        flex: 1;
+      }
+    }
+
+    @media screen and (min-width: 565px) {
+      li .p-tabview-nav-link {
+        padding: 0 20px;
+      }
+    }
+  }
+
+  & .p-tabview-panels {
+    padding: 0;
+    background-color: transparent;
+  }
+}

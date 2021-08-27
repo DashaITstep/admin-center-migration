@@ -1,0 +1,59 @@
+@import '../../utils/variables';
+@import '../../utils/media-queries';
+@import '../../utils/prime-ng-designer/designer/mixins';
+
+.text {
+  width: 100%;
+  box-shadow: none;
+  min-height: 50px;
+  background-color: white;
+  border-radius: 0 8px 8px 8px;
+  border: 1px solid #ccc;
+
+  &--disabled,
+  &--disabled * {
+    background-color: $grey-light;
+    opacity: 0.9;
+    color: $color-eclipse;
+    pointer-events: none;
+  }
+
+  &:focus:not(.p-state-error) {
+    @include focused-input();
+  }
+
+  &--first {
+    min-height: 39px;
+    line-height: 15px;
+    border-radius: 0 8px 0 0;
+    border-bottom-width: 0;
+
+    @include breakpoints-down(xs) {
+      border-radius: 0;
+    }
+  }
+
+  &--middle {
+    min-height: 39px;
+    border-radius: 0;
+    line-height: 15px;
+    border-bottom-width: 0;
+  }
+
+  &--last {
+    min-height: 39px;
+    border-radius: 0 0 8px 8px;
+    line-height: 15px;
+  }
+
+  &--single {
+    border-radius: 0 8px 8px 8px;
+    @include breakpoints-down(xs) {
+      border-radius: 0 0 8px 8px;
+    }
+  }
+}
+
+.input-actions {
+  padding: 0.5em 0.5em 0 0;
+}

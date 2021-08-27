@@ -1,0 +1,59 @@
+.p-datepicker table th > span {
+  height: 30px;
+}
+
+@media screen and (max-width: 769px) {
+  .p-datepicker table td {
+    padding: 5px;
+  }
+}
+
+.p-datepicker {
+  .p-timepicker > div {
+    padding: 0;
+  }
+
+  &-calendar {
+    thead {
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      font-weight: 400;
+
+      span {
+        color: #999999;
+        width: 20px;
+        margin: auto;
+        text-indent: 4px;
+        display: block;
+        overflow: hidden;
+      }
+      & > span {
+        height: 30px;
+        padding: 7px;
+      }
+    }
+
+    td {
+      text-align: center;
+
+      & > a {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 60px;
+        padding-top: 9px;
+      }
+
+      &.p-datepicker-other-month {
+        span {
+          color: #d8d8d8;
+        }
+      }
+    }
+  }
+}

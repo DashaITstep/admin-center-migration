@@ -1,0 +1,67 @@
+@import '../../../../utils/variables';
+
+app-select-list {
+  cursor: pointer !important;
+}
+
+.list {
+  position: fixed;
+  background: $white;
+  z-index: 2;
+  border-radius: 5px;
+  border: solid 1px $color-pink-swan;
+  max-height: 160px;
+  overflow-y: auto;
+
+  &__item {
+    min-height: 35px;
+    line-height: 18px;
+    padding: 8px 12px;
+    border-bottom: solid 1px $color-pink-swan;
+
+    &:hover {
+      cursor: pointer !important;
+      background-color: $grey-light;
+    }
+
+    &:last-child,
+    &:only-child {
+      border-bottom: none;
+    }
+
+    &--disabled {
+      background-color: #f8f8f8;
+
+      &:hover {
+        background-color: #f8f8f8;
+        cursor: default;
+      }
+    }
+
+    &--selected {
+      background-color: $primary-color;
+
+      &:hover {
+        background-color: $primary-color;
+      }
+
+      & .list__item-content {
+        color: $white;
+      }
+    }
+  }
+
+  &__item-content {
+    font-size: 14px;
+    color: $color-eclipse;
+  }
+}
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer !important;
+  span {
+    cursor: pointer !important;
+  }
+}

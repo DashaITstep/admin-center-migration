@@ -1,0 +1,99 @@
+<div class="ace-response"
+     (click)="isActiveResponse = true"
+     (clickOutside)="isActiveResponse = false"
+     [attr.id]="'aceResponse-' + question.DisplayName.replace(' ', '')"
+>
+  <div class="ace-response__head"
+       (click)="onToggle()"
+       [class.cursor-pointer]="expandable"
+       [class.ace-response__head--collapsed]="expandable && !expanded">
+
+    <p-checkbox
+      *ngIf="selectMode && (question | isCloneable)"
+      [(ngModel)]="selected"
+      [binary]="true"
+      (click)="onToggleCheckbox($event)"
+      [ngModelOptions]="{ standalone: true }"
+    ></p-checkbox>
+
+    <div class="ace-response__title-box">
+      <app-info-tip [locked]="true" *ngIf="!question.UserDefinable"></app-info-tip>
+
+      <span class="ace-response__toggle" *ngIf="expandable">
+        <i class="pi pi-chevron-right" [class.down]="expanded"></i>
+      </span>
+
+      <span class="ace-response__title">{{ question.DisplayName }}</span>
+
+      <app-info-tip [description]="question.HelpInformation"></app-info-tip>
+    </div>
+
+    <div class="ace-response__tags" *ngIf="question?.Tags?.length">
+      <app-tag *ngFor="let tag of question.Tags" [tag]="tag"></app-tag>
+    </div>
+  </div>
+
+  <div class="ace-response__body" *ngIf="expandable ? expanded : true">
+    <div class="inputs" [formGroupName]="question.PromptId">
+      <p-tabView (onChange)="onSelectTab($event)">
+
+        <p-tabPanel *ngFor="let tab of tabs; let last = last; let i = index"
+          [header]="tab.header"
+          [selected]="selected"
+          [headerStyleClass]="last ? 'inputs__last-tab' : ''"
+        >
+
+          <ng-template pTemplate="content">
+            <div [ngClass]="{ 'not-allowed': selectMode }" [ngSwitch]="tab.typeId">
+              <app-call-tab
+                *ngSwitchCase="typeIds.Voice"
+                [isDefaultResponse]="isDefaultResponse('Voice')"
+                [responseOptions]="question.Voice.ResponseOptions"
+                [isSelectMode]="selectMode"
+              ></app-call-tab>
+
+              <div *ngSwitchCase="typeIds.WebChat" formGroupName="WebChat">
+                <app-chatbot-tab
+                  [isAutoFocused]="isActiveResponse && selected"
+                  controlName="ResponseValue"
+                  [isDefaultResponse]="isDefaultResponse('WebChat')"
+                  [isReadonly]="!question.UserDefinable"
+                  [isSelectMode]="selectMode"
+                ></app-chatbot-tab>
+              </div>
+
+              <app-text-tab
+                *ngSwitchCase="typeIds.SMS"
+                [isAutoFocused]="isActiveResponse && selected"
+                [isDefaultResponse]="isDefaultResponse('SMS')"
+                [responseOptions]="question.Voice.ResponseOptions"
+                [isSelectMode]="selectMode"
+              ></app-text-tab>
+            </div>
+          </ng-template>
+
+        </p-tabPanel>
+
+        <p-tabPanel
+          *ngIf="options.length"
+          headerStyleClass="inputs__plus-tab"
+          [headerStyle]="{ border: 'none' }"
+        >
+          <ng-template pTemplate="header">
+            <div [ngClass]="{ 'not-allowed': selectMode }">
+              <app-select-list
+                class="ace-response__plus"
+                (selected)="onTypeSelected($event)"
+                [options]="options"
+                [disabled]="selectMode"
+              >
+                <i [ngClass]="{ 'grayed-out': selectMode }" class="pi pi-plus"></i>
+              </app-select-list>
+            </div>
+          </ng-template>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>
+
